@@ -1,11 +1,11 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
-export const config = {
-  runtime: "edge",
-};
+// export const config = {
+//   runtime: "edge",
+// };
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 const app = new Hono().basePath("/api");
 
 app.get("/", async (c) => {
