@@ -1,7 +1,6 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import sharp from "sharp";
-import { html } from "hono/html";
 
 // export const config = {
 //   runtime: "edge",
@@ -26,15 +25,7 @@ const app = new Hono().basePath("/api");
 
 app.get("/", async (c) => {
   console.log("dasdasdasdasdasdasd");
-  return c.newResponse(await fun());
-});
-
-app.get("/html", async (c) => {
-  console.log("dasdasdasdasdasdasd");
-  return c.html(
-    html`<!DOCTYPE html>
-      <h1>Hello! ${`username`}!</h1>`
-  );
+  return c.json({ hello: "world" });
 });
 
 export default handle(app);
