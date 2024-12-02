@@ -9,7 +9,8 @@ const app = new Hono().basePath("/api");
 
 app.get("/", async (c) => {
   // random image from
-  const picsum = "https://picsum.photos/200/300";
+  const picsum =
+    "https://fastly.picsum.photos/id/548/200/300.jpg?hmac=dXVAc-s_U8QgoYUrMld43VmrOby1cluk-akWgxY6b9Y";
 
   const imageResource = (await fetch(picsum)).body;
 
