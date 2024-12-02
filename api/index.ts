@@ -1,15 +1,40 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
-import { fun } from "./imageGetter";
+import sharp from "sharp";
+import { html } from "hono/html";
 
 // export const config = {
 //   runtime: "edge",
 // };
 
+export const pictureFetcher = async () => {
+  const picture = await fetch("https://picsum.photos/200/300");
+  // console.log(picture);
+
+  return picture;
+};
+
+export const fun = async () => {
+  const img = await (await pictureFetcher()).arrayBuffer();
+
+  const imgBuffer = sharp(img).rotate(40).toBuffer();
+
+  return await imgBuffer;
+};
+
 const app = new Hono().basePath("/api");
 
 app.get("/", async (c) => {
+  console.log("dasdasdasdasdasdasd");
   return c.newResponse(await fun());
+});
+
+app.get("/html", async (c) => {
+  console.log("dasdasdasdasdasdasd");
+  return c.html(
+    html`<!DOCTYPE html>
+      <h1>Hello! ${`username`}!</h1>`
+  );
 });
 
 export default handle(app);
