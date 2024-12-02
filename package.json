@@ -1,6 +1,6 @@
 {
-  "type": "module",
   "name": "vercel-hono-test",
+  "type": "module",
   "scripts": {
     "start": "vercel dev",
     "deploy": "vercel"
