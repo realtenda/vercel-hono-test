@@ -6,20 +6,22 @@ import sharp from "sharp";
 //   runtime: "edge",
 // };
 
-export const pictureFetcher = async () => {
-  const picture = await fetch("https://picsum.photos/200/300");
-  // console.log(picture);
+export const runtime = "nodejs";
 
-  return picture;
-};
+// export const pictureFetcher = async () => {
+//   const picture = await fetch("https://picsum.photos/200/300");
+//   // console.log(picture);
 
-export const fun = async () => {
-  const img = await (await pictureFetcher()).arrayBuffer();
+//   return picture;
+// };
 
-  const imgBuffer = sharp(img).rotate(40).toBuffer();
+// export const fun = async () => {
+//   const img = await (await pictureFetcher()).arrayBuffer();
 
-  return await imgBuffer;
-};
+//   const imgBuffer = sharp(img).rotate(40).toBuffer();
+
+//   return await imgBuffer;
+// };
 
 const app = new Hono().basePath("/api");
 
