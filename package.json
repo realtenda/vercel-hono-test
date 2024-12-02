@@ -1,10 +1,12 @@
 {
   "name": "vercel-hono-test",
+  "type": "module",
   "scripts": {
     "start": "vercel dev",
     "deploy": "vercel"
   },
   "dependencies": {
+    "@vercel/edge-config": "^1.4.0",
     "hono": "^4.6.12"
   },
   "devDependencies": {
